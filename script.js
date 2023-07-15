@@ -53,8 +53,8 @@ const Questions = [
   },
 ];
 
-//   // Set start
-//   let start = true;
+  // Set start
+  let start = true;
 //   let enabled = false;
 //   let selected = "";
 
@@ -65,10 +65,10 @@ const Questions = [
 const question = document.getElementById("question");
 
 // Getting the options
-const op0 = document.getElementById("op0");
-const op1 = document.getElementById("op1");
-const op2 = document.getElementById("op2");
-const op3 = document.getElementById("op3");
+const opt0 = document.getElementById("option0");
+const opt1 = document.getElementById("option1");
+const opt2 = document.getElementById("option2");
+const opt3 = document.getElementById("option3");
 
 //   // Show selection for op1
 //   op1.addEventListener("click", () => {
@@ -102,26 +102,28 @@ const op3 = document.getElementById("op3");
 //     }
 //   });
 
-//   // Iterate
-//   function iterate(id) {
-//     // Getting the result display section
-//     const result = document.getElementsByClassName("result");
-//     result[0].innerText = "";
-//     // Setting the question text
-//     question.innerText = Questions[id].q;
+// Iterate
+  function iterate(id) {
+    // Getting the result display section
+    const result = document.getElementsByClassName("result");
+    result[0].innerText = "";
+    // Setting the question text
+    question.innerText = Questions[id].q;
 
-//     // Providing option text
-//     op1.innerText = Questions[id].a[0].text;
-//     op2.innerText = Questions[id].a[1].text;
+    // Providing option text
+    opt0.innerText = Questions[id].a[0].text;
+    opt1.innerText = Questions[id].a[1].text;
+    opt2.innerText = Questions[id].a[2].text;
+    opt3.innerText = Questions[id].a[3].text;
 
-//     // Providing the true or false value to the options
-//     op1.value = Questions[id].a[0].isCorrect;
-//     op2.value = Questions[id].a[1].isCorrect;
-//   }
+    // Providing the true or false value to the options
+    opt1.value = Questions[id].a[0].isCorrect;
+    opt2.value = Questions[id].a[1].isCorrect;
+  }
 
-//   if (start) {
-//     iterate("0");
-//   }
+  if (start) {
+    iterate("0");
+  }
 
 //   // Next button and method
 //   const next = document.getElementsByClassName("next")[0];
