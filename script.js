@@ -61,13 +61,14 @@ const Questions = [
 //   // Set test result variable
 //   let testResult = 0;
 
-//   //Setting color in JS
+// Getting the question
+const question = document.getElementById("question");
 
-//   // Getting the question
-//   const question = document.getElementById("question");
-//   // Getting the options
-//   const op1 = document.getElementById("op1");
-//   const op2 = document.getElementById("op2");
+// Getting the options
+const op0 = document.getElementById("op0");
+const op1 = document.getElementById("op1");
+const op2 = document.getElementById("op2");
+const op3 = document.getElementById("op3");
 
 //   // Show selection for op1
 //   op1.addEventListener("click", () => {
