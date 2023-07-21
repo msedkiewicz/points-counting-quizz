@@ -141,37 +141,6 @@ opt3div.addEventListener("click", () => {
     selected = Questions[id].a[3].score;
   }
 });
-//   // Show selection for op1
-//   op1.addEventListener("click", () => {
-//     if (op1.classList.contains("option-active")) {
-//       op1.classList.remove("option-active");
-//       selected = false;
-//       enabled = false;
-//       next.classList.remove("next-active");
-//     } else {
-//       op1.classList.add("option-active");
-//       op2.classList.remove("option-active");
-//       selected = op1.value;
-//       enabled = true;
-//       next.classList.add("next-active");
-//     }
-//   });
-
-//   // Show selection for op2
-//   op2.addEventListener("click", () => {
-//     if (op2.classList.contains("option-active")) {
-//       op2.classList.remove("option-active");
-//       selected = false;
-//       enabled = false;
-//       next.classList.remove("next-active");
-//     } else {
-//       op2.classList.add("option-active");
-//       op1.classList.remove("option-active");
-//       selected = op2.value;
-//       enabled = true;
-//       next.classList.add("next-active");
-//     }
-//   });
 
 // Iterate
 function iterate(id) {
