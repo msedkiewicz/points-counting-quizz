@@ -92,6 +92,10 @@ opt0div.addEventListener("click", () => {
     opt1div.classList.remove("option-active");
     opt2div.classList.remove("option-active");
     opt3div.classList.remove("option-active");
+    opt0checked.checked = true;
+    opt1checked.checked = false;
+    opt2checked.checked = false;
+    opt3checked.checked = false;
     selected = Questions[id].a[0].score;
   }
 });
@@ -102,6 +106,10 @@ opt1div.addEventListener("click", () => {
     opt1div.classList.add("option-active");
     opt2div.classList.remove("option-active");
     opt3div.classList.remove("option-active");
+    opt0checked.checked = false;
+    opt1checked.checked = true;
+    opt2checked.checked = false;
+    opt3checked.checked = false;
     selected = Questions[id].a[1].score;
   }
 });
@@ -112,6 +120,10 @@ opt2div.addEventListener("click", () => {
     opt1div.classList.remove("option-active");
     opt2div.classList.add("option-active");
     opt3div.classList.remove("option-active");
+    opt0checked.checked = false;
+    opt1checked.checked = false;
+    opt2checked.checked = true;
+    opt3checked.checked = false;
     selected = Questions[id].a[2].score;
   }
 });
@@ -122,6 +134,10 @@ opt3div.addEventListener("click", () => {
     opt1div.classList.remove("option-active");
     opt2div.classList.remove("option-active");
     opt3div.classList.add("option-active");
+    opt0checked.checked = false;
+    opt1checked.checked = false;
+    opt2checked.checked = false;
+    opt3checked.checked = true;
     selected = Questions[id].a[3].score;
   }
 });
