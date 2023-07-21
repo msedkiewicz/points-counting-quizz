@@ -1,7 +1,7 @@
 // Questions
 const Questions = [
   {
-    id: 0,
+    id: 1,
     q: "Pytanie 1",
     a: [
       {
@@ -20,7 +20,7 @@ const Questions = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     q: "Pytanie 2",
     a: [
       { text: "Nie przejmuję się zbytnio przyszłością.", score: 0 },
@@ -36,7 +36,7 @@ const Questions = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     q: "Pytanie 3",
     a: [
       { text: "Sądzę, że nie popełniam większych zaniedbań.", score: 0 },
@@ -53,8 +53,8 @@ const Questions = [
   },
 ];
 
-  // Set start
-  let start = true;
+// Set start
+let start = true;
 //   let enabled = false;
 //   let selected = "";
 
@@ -103,56 +103,61 @@ const opt3 = document.getElementById("option3");
 //   });
 
 // Iterate
-  function iterate(id) {
-    // Getting the result display section
-    const result = document.getElementsByClassName("result");
-    result[0].innerText = "";
-    // Setting the question text
-    question.innerText = Questions[id].q;
+function iterate(id) {
+  // Getting the result display section
+  const result = document.getElementsByClassName("result");
+  result[0].innerText = "";
+  // Setting the question text
+  question.innerText = Questions[id].q;
 
-    // Providing option text
-    opt0.innerText = Questions[id].a[0].text;
-    opt1.innerText = Questions[id].a[1].text;
-    opt2.innerText = Questions[id].a[2].text;
-    opt3.innerText = Questions[id].a[3].text;
+  // Providing option text
+  opt0.innerText = Questions[id].a[0].text;
+  opt1.innerText = Questions[id].a[1].text;
+  opt2.innerText = Questions[id].a[2].text;
+  opt3.innerText = Questions[id].a[3].text;
 
-    // Providing the true or false value to the options
-    opt1.value = Questions[id].a[0].isCorrect;
-    opt2.value = Questions[id].a[1].isCorrect;
-  }
+  // Providing the true or false value to the options
+  opt0.value = Questions[id].a[0].score;
+  opt1.value = Questions[id].a[1].score;
+  opt2.value = Questions[id].a[2].score;
+  opt3.value = Questions[id].a[3].score;
+}
 
-  if (start) {
-    iterate("0");
-  }
+if (start) {
+  iterate("0");
+}
 
-//   // Next button and method
-//   const next = document.getElementsByClassName("next")[0];
-//   let id = 1;
+  // Next button and method
+  const next = document.getElementsByClassName("next")[0];
+  let id = 1;
 
-//   let finish = false;
+  let finish = false;
 
-//   next.addEventListener("click", () => {
-//     start = false;
-//     if (enabled === true) {
-//       if (selected === "true" && finish === false) {
-//         testResult = testResult + 1;
-//       }
-//       if (id == 22) {
-//         next.innerText = "Zakończ test";
-//       }
-//       if (id == 23) {
-//         finish = true;
-//         const result = document.getElementsByClassName("result");
-//         result[0].innerText = "Twój wynik testu to: " + testResult;
-//       }
+  next.addEventListener("click", () => {
+    start = false;
+    // if (enabled === true) {
+      // if (selected === "true" && finish === false) {
+      //   testResult = testResult + 1;
+      // }
+      if (id === 1) {
+        console.log("działa!");
+      };
+      if (id == 22) {
+        next.innerText = "Zakończ test";
+      }
+      if (id == 23) {
+        finish = true;
+        const result = document.getElementsByClassName("result");
+        result[0].innerText = "Twój wynik testu to: " + testResult;
+      }
 
-//       if (id < 23) {
-//         iterate(id);
-//         id++;
-//       }
-//       enabled = false;
-//       op1.classList.remove("option-active");
-//       op2.classList.remove("option-active");
-//       next.classList.remove("next-active");
-//     }
-//   });
+      if (id < 23) {
+        iterate(id);
+        id++;
+      }
+      // enabled = false;
+      // op1.classList.remove("option-active");
+      // op2.classList.remove("option-active");
+      // next.classList.remove("next-active");
+    // }
+  });
