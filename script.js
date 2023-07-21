@@ -70,12 +70,57 @@ const opt1 = document.getElementById("option1");
 const opt2 = document.getElementById("option2");
 const opt3 = document.getElementById("option3");
 
+// Getting opitions div
+
+const opt0div = document.getElementById("first-option");
+const opt1div = document.getElementById("second-option");
+const opt2div = document.getElementById("third-option");
+const opt3div = document.getElementById("fourth-option");
+
 // Setting all unchecked
 const opt0checked = document.getElementById("opt0");
 const opt1checked = document.getElementById("opt1");
 const opt2checked = document.getElementById("opt2");
 const opt3checked = document.getElementById("opt3");
 
+// Selection rules
+
+opt0div.addEventListener("click", () => {
+  console.log("clicked!");
+  if (!opt0div.classList.contains("option-active")) {
+    opt0div.classList.add("option-active");
+    opt1div.classList.remove("option-active");
+    opt2div.classList.remove("option-active");
+    opt3div.classList.remove("option-active");
+  }
+});
+opt1div.addEventListener("click", () => {
+  console.log("clicked 2!");
+  if (!opt1div.classList.contains("option-active")) {
+    opt0div.classList.remove("option-active");
+    opt1div.classList.add("option-active");
+    opt2div.classList.remove("option-active");
+    opt3div.classList.remove("option-active");
+  }
+});
+opt2div.addEventListener("click", () => {
+  console.log("clicked 3!");
+  if (!opt2div.classList.contains("option-active")) {
+    opt0div.classList.remove("option-active");
+    opt1div.classList.remove("option-active");
+    opt2div.classList.add("option-active");
+    opt3div.classList.remove("option-active");
+  }
+});
+opt3div.addEventListener("click", () => {
+  console.log("clicked 4!");
+  if (!opt3div.classList.contains("option-active")) {
+    opt0div.classList.remove("option-active");
+    opt1div.classList.remove("option-active");
+    opt2div.classList.remove("option-active");
+    opt3div.classList.add("option-active");
+  }
+});
 //   // Show selection for op1
 //   op1.addEventListener("click", () => {
 //     if (op1.classList.contains("option-active")) {
@@ -133,40 +178,47 @@ if (start) {
   iterate("0");
 }
 
-  // Next button and method
-  const next = document.getElementsByClassName("next")[0];
-  let id = 1;
+// Next button and method
+const next = document.getElementsByClassName("next")[0];
+let id = 1;
 
-  let finish = false;
+let finish = false;
 
-  next.addEventListener("click", () => {
-    start = false;
-    // if (enabled === true) {
-      // if (selected === "true" && finish === false) {
-      //   testResult = testResult + 1;
-      // }
-      if (id == 2) {
-        next.innerText = "Zakończ test";
-      }
-      if (id == 3) {
-        finish = true;
-        const result = document.getElementsByClassName("result");
-        result[0].innerText = "Twój wynik testu to: "; // + testResult;
-      }
+next.addEventListener("click", () => {
+  start = false;
+  // if (enabled === true) {
+  // if (selected === "true" && finish === false) {
+  //   testResult = testResult + 1;
+  // }
+  if (id == 2) {
+    next.innerText = "Zakończ test";
+  }
+  if (id == 3) {
+    finish = true;
+    const result = document.getElementsByClassName("result");
+    result[0].innerText = "Twój wynik testu to: "; // + testResult;
+  }
 
-      if (id < 3) {
-        console.log("opt1: ", opt1checked.value);
-        iterate(id);
-        id++;
-      }
-      opt0checked.checked = false;
-      opt1checked.checked = false;
-      opt2checked.checked = false;
-      opt3checked.checked = false;
+  if (id < 3) {
+    console.log("opt1: ", opt1checked.value);
+    iterate(id);
+    id++;
+  }
+  // Remove checked
+  opt0checked.checked = false;
+  opt1checked.checked = false;
+  opt2checked.checked = false;
+  opt3checked.checked = false;
 
-      // enabled = false;
-      // op1.classList.remove("option-active");
-      // op2.classList.remove("option-active");
-      // next.classList.remove("next-active");
-    // }
-  });
+  // Remove styling for checked
+  opt0div.classList.remove("option-active");
+  opt1div.classList.remove("option-active");
+  opt2div.classList.remove("option-active");
+  opt3div.classList.remove("option-active");
+
+  // enabled = false;
+  // op1.classList.remove("option-active");
+  // op2.classList.remove("option-active");
+  // next.classList.remove("next-active");
+  // }
+});
