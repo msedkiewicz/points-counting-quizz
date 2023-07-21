@@ -56,10 +56,10 @@ const Questions = [
 // Set start
 let start = true;
 let selected = "";
-//   let enabled = false;
+let enabled = false;
 
-  // Set test result variable
-  let testResult = 0;
+// Set test result variable
+let testResult = 0;
 
 // Getting the question
 const question = document.getElementById("question");
@@ -97,6 +97,9 @@ opt0div.addEventListener("click", () => {
     opt2checked.checked = false;
     opt3checked.checked = false;
     selected = Questions[id].a[0].score;
+    enabled = true;
+    next.classList.add("next-active");
+    console.log("enabled? ", enabled);
   }
 });
 opt1div.addEventListener("click", () => {
@@ -111,6 +114,9 @@ opt1div.addEventListener("click", () => {
     opt2checked.checked = false;
     opt3checked.checked = false;
     selected = Questions[id].a[1].score;
+    enabled = true;
+    next.classList.add("next-active");
+    console.log("enabled? ", enabled);
   }
 });
 opt2div.addEventListener("click", () => {
@@ -125,6 +131,9 @@ opt2div.addEventListener("click", () => {
     opt2checked.checked = true;
     opt3checked.checked = false;
     selected = Questions[id].a[2].score;
+    enabled = true;
+    next.classList.add("next-active");
+    console.log("enabled? ", enabled);
   }
 });
 opt3div.addEventListener("click", () => {
@@ -139,39 +148,11 @@ opt3div.addEventListener("click", () => {
     opt2checked.checked = false;
     opt3checked.checked = true;
     selected = Questions[id].a[3].score;
+    enabled = true;
+    next.classList.add("next-active");
+    console.log("enabled? ", enabled);
   }
 });
-//   // Show selection for op1
-//   op1.addEventListener("click", () => {
-//     if (op1.classList.contains("option-active")) {
-//       op1.classList.remove("option-active");
-//       selected = false;
-//       enabled = false;
-//       next.classList.remove("next-active");
-//     } else {
-//       op1.classList.add("option-active");
-//       op2.classList.remove("option-active");
-//       selected = op1.value;
-//       enabled = true;
-//       next.classList.add("next-active");
-//     }
-//   });
-
-//   // Show selection for op2
-//   op2.addEventListener("click", () => {
-//     if (op2.classList.contains("option-active")) {
-//       op2.classList.remove("option-active");
-//       selected = false;
-//       enabled = false;
-//       next.classList.remove("next-active");
-//     } else {
-//       op2.classList.add("option-active");
-//       op1.classList.remove("option-active");
-//       selected = op2.value;
-//       enabled = true;
-//       next.classList.add("next-active");
-//     }
-//   });
 
 // Iterate
 function iterate(id) {
@@ -206,7 +187,7 @@ let finish = false;
 
 next.addEventListener("click", () => {
   start = false;
-  // if (enabled === true) {
+  if (enabled === true) {
     if (id == 2) {
       next.innerText = "Zakończ test";
     }
@@ -236,7 +217,7 @@ next.addEventListener("click", () => {
     opt3div.classList.remove("option-active");
 
     // selected = "";
-    // enabled = false;
-    // next.classList.remove("next-active");
-  // }
+    enabled = false;
+    next.classList.remove("next-active");
+  }
 });
