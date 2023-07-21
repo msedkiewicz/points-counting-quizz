@@ -374,6 +374,14 @@ const opt1checked = document.getElementById("opt1");
 const opt2checked = document.getElementById("opt2");
 const opt3checked = document.getElementById("opt3");
 
+// Results
+const result = document.getElementsByClassName("result");
+const resultDescription = document.getElementsByClassName("result-description");
+resultOne = "Prawdopodobnie to tymczasowe pogorszenie nastroju, spowodowane bieżącymi wydarzeniami w Twoim życiu. Jeśli przykre objawy będą utrzymywać się nadal, wykonaj ten test po 7 dniach i porównaj wyniki czy następuje pogorszenie czy poprawa.";
+resulTwo = "Wynik w tym przedziale wskazuje na potrzebę udania się do psychologa lub psychoterapeuty w celu dalszej diagnostyki. Łagodne objawy depresyjne leczone są psychoterapią, bez konieczności włączania farmakoterapii. Psycholog/ psychoterapeuta w razie konieczności skieruje Cię do lekarza psychiatry.";
+resultThree = "Punktacja w tym przedziale sugeruje podjęcie szybkich działań i kontakt z psychologiem/psychoterapeutą lub psychiatrą. Istnieje prawdopodobieństwo włączenia leczenia farmakologicznego, przeciwdepresyjnego przez psychiatrę. Ważne aby oprócz działań farmakologicznych rozpocząć psychoterapię. To warunkuje skuteczne leczenie depresji.";
+resultFour= "Konieczne jest udanie się do lekarza psychiatry. To niebezpieczny stan dla zdrowia i życia, głównie gdy pojawiają się myśli samobójcze. Psychoterapia jest bardziej intensywna. W niektórych przypadkach koniczne jest leczenie szpitalne aby nie dopuścić do zagrożenia życia.";
+
 // Selection rules
 
 opt0div.addEventListener("click", () => {
@@ -473,8 +481,16 @@ next.addEventListener("click", () => {
   if (id == 21) {
     finish = true;
     testResult = testResult + selected;
-    const result = document.getElementsByClassName("result");
     result[0].innerText = "Twój wynik testu to: " + testResult;
+    if (testResult < 12) {
+      resultDescription[0].innerHTML = resultOne;
+    } else if (testResult > 11 && testResult < 20) {
+      resultDescription[0].innerHTML = resultTwo;
+    } else if (testResult > 19 && testResult < 26 ) {
+      resultDescription[0].innerHTML = resultThree;
+    } else {
+      resultDescription[0].innerHTML = resultFour;
+    }
   }
 
   if (id < 21) {
