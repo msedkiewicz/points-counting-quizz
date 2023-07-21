@@ -70,6 +70,14 @@ const opt1 = document.getElementById("option1");
 const opt2 = document.getElementById("option2");
 const opt3 = document.getElementById("option3");
 
+// Setting all unchecked
+const opt0checked = document.getElementById("opt0");
+const opt1checked = document.getElementById("opt1");
+const opt2checked = document.getElementById("opt2");
+const opt3checked = document.getElementById("opt3");
+
+// const checked = document.querySelectorAll('input[name="answer"]');
+
 //   // Show selection for op1
 //   op1.addEventListener("click", () => {
 //     if (op1.classList.contains("option-active")) {
@@ -149,9 +157,15 @@ if (start) {
       }
 
       if (id < 3) {
+        console.log("opt1: ", opt1checked.value);
         iterate(id);
         id++;
       }
+      opt0checked.checked = false;
+      opt1checked.checked = false;
+      opt2checked.checked = false;
+      opt3checked.checked = false;
+      // input.checked = false;
       // enabled = false;
       // op1.classList.remove("option-active");
       // op2.classList.remove("option-active");
