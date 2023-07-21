@@ -55,8 +55,9 @@ const Questions = [
 
 // Set start
 let start = true;
+let selected = "";
 //   let enabled = false;
-//   let selected = "";
+
 
 //   // Set test result variable
 //   let testResult = 0;
@@ -92,6 +93,7 @@ opt0div.addEventListener("click", () => {
     opt1div.classList.remove("option-active");
     opt2div.classList.remove("option-active");
     opt3div.classList.remove("option-active");
+    selected = Questions[id].a[0].score;
   }
 });
 opt1div.addEventListener("click", () => {
@@ -101,6 +103,7 @@ opt1div.addEventListener("click", () => {
     opt1div.classList.add("option-active");
     opt2div.classList.remove("option-active");
     opt3div.classList.remove("option-active");
+    selected = Questions[id].a[1].score;
   }
 });
 opt2div.addEventListener("click", () => {
@@ -110,6 +113,7 @@ opt2div.addEventListener("click", () => {
     opt1div.classList.remove("option-active");
     opt2div.classList.add("option-active");
     opt3div.classList.remove("option-active");
+    selected = Questions[id].a[2].score;
   }
 });
 opt3div.addEventListener("click", () => {
@@ -119,6 +123,7 @@ opt3div.addEventListener("click", () => {
     opt1div.classList.remove("option-active");
     opt2div.classList.remove("option-active");
     opt3div.classList.add("option-active");
+    selected = Questions[id].a[3].score;
   }
 });
 //   // Show selection for op1
@@ -200,7 +205,7 @@ next.addEventListener("click", () => {
   }
 
   if (id < 3) {
-    console.log("opt1: ", opt1checked.value);
+    console.log(selected);
     iterate(id);
     id++;
   }
