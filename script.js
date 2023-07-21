@@ -139,19 +139,16 @@ if (start) {
       // if (selected === "true" && finish === false) {
       //   testResult = testResult + 1;
       // }
-      if (id === 1) {
-        console.log("działa!");
-      };
-      if (id == 22) {
+      if (id == 2) {
         next.innerText = "Zakończ test";
       }
-      if (id == 23) {
+      if (id == 3) {
         finish = true;
         const result = document.getElementsByClassName("result");
-        result[0].innerText = "Twój wynik testu to: " + testResult;
+        result[0].innerText = "Twój wynik testu to: "; // + testResult;
       }
 
-      if (id < 23) {
+      if (id < 3) {
         iterate(id);
         id++;
       }
