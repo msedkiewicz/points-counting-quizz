@@ -76,8 +76,6 @@ const opt1checked = document.getElementById("opt1");
 const opt2checked = document.getElementById("opt2");
 const opt3checked = document.getElementById("opt3");
 
-// const checked = document.querySelectorAll('input[name="answer"]');
-
 //   // Show selection for op1
 //   op1.addEventListener("click", () => {
 //     if (op1.classList.contains("option-active")) {
@@ -165,7 +163,7 @@ if (start) {
       opt1checked.checked = false;
       opt2checked.checked = false;
       opt3checked.checked = false;
-      // input.checked = false;
+
       // enabled = false;
       // op1.classList.remove("option-active");
       // op2.classList.remove("option-active");
