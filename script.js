@@ -58,9 +58,8 @@ let start = true;
 let selected = "";
 //   let enabled = false;
 
-
-//   // Set test result variable
-//   let testResult = 0;
+  // Set test result variable
+  let testResult = 0;
 
 // Getting the question
 const question = document.getElementById("question");
@@ -192,38 +191,36 @@ let finish = false;
 next.addEventListener("click", () => {
   start = false;
   // if (enabled === true) {
-  // if (selected === "true" && finish === false) {
-  //   testResult = testResult + 1;
-  // }
-  if (id == 2) {
-    next.innerText = "Zakończ test";
-  }
-  if (id == 3) {
-    finish = true;
-    const result = document.getElementsByClassName("result");
-    result[0].innerText = "Twój wynik testu to: "; // + testResult;
-  }
+    if (id == 2) {
+      next.innerText = "Zakończ test";
+    }
+    if (id == 3) {
+      finish = true;
+      testResult = testResult + selected;
+      const result = document.getElementsByClassName("result");
+      result[0].innerText = "Twój wynik testu to: " + testResult;
+    }
 
-  if (id < 3) {
-    console.log(selected);
-    iterate(id);
-    id++;
-  }
-  // Remove checked
-  opt0checked.checked = false;
-  opt1checked.checked = false;
-  opt2checked.checked = false;
-  opt3checked.checked = false;
+    if (id < 3) {
+      testResult = testResult + selected;
+      console.log(testResult);
+      iterate(id);
+      id++;
+    }
+    // Remove checked
+    opt0checked.checked = false;
+    opt1checked.checked = false;
+    opt2checked.checked = false;
+    opt3checked.checked = false;
 
-  // Remove styling for checked
-  opt0div.classList.remove("option-active");
-  opt1div.classList.remove("option-active");
-  opt2div.classList.remove("option-active");
-  opt3div.classList.remove("option-active");
+    // Remove styling for checked
+    opt0div.classList.remove("option-active");
+    opt1div.classList.remove("option-active");
+    opt2div.classList.remove("option-active");
+    opt3div.classList.remove("option-active");
 
-  // enabled = false;
-  // op1.classList.remove("option-active");
-  // op2.classList.remove("option-active");
-  // next.classList.remove("next-active");
+    // selected = "";
+    // enabled = false;
+    // next.classList.remove("next-active");
   // }
 });
