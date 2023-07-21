@@ -123,7 +123,10 @@ const Questions = [
     q: "Pytanie 8",
     a: [
       { text: "Nie czuję się gorszy / gorsza od innych ludzi.", score: 0 },
-      { text: "Zarzucam sobie, że jestem nieudolny / nieudolna i popełniam błędy.", score: 1 },
+      {
+        text: "Zarzucam sobie, że jestem nieudolny / nieudolna i popełniam błędy.",
+        score: 1,
+      },
       {
         text: "Stale potępiam siebie za popełnione błędy.",
         score: 2,
@@ -139,7 +142,10 @@ const Questions = [
     q: "Pytanie 9",
     a: [
       { text: "Nie myślę o odebraniu sobie życia.", score: 0 },
-      { text: "Myślę o samobójstwie — ale nie mógłbym / nie mogłabym tego dokonać.", score: 1 },
+      {
+        text: "Myślę o samobójstwie — ale nie mógłbym / nie mogłabym tego dokonać.",
+        score: 1,
+      },
       {
         text: "Pragnę odebrać sobie życie.",
         score: 2,
@@ -170,8 +176,14 @@ const Questions = [
     id: 11,
     q: "Pytanie 11",
     a: [
-      { text: "Nie jestem bardziej podenerwowany / podenerwowana niż dawniej.", score: 0 },
-      { text: "Jestem bardziej nerwowy / nerwowa i przykry / przykra niż dawniej.", score: 1 },
+      {
+        text: "Nie jestem bardziej podenerwowany / podenerwowana niż dawniej.",
+        score: 0,
+      },
+      {
+        text: "Jestem bardziej nerwowy / nerwowa i przykry / przykra niż dawniej.",
+        score: 1,
+      },
       {
         text: "Jestem stale zdenerwowany / zdenerwowana lub rozdrażniony / rozdrażniona.",
         score: 2,
@@ -219,7 +231,10 @@ const Questions = [
     q: "Pytanie 14",
     a: [
       { text: "Sądzę, że wyglądam nie gorzej niż dawniej.", score: 0 },
-      { text: "Martwię się tym, że wyglądam staro i nieatrakcyjnie.", score: 1 },
+      {
+        text: "Martwię się tym, że wyglądam staro i nieatrakcyjnie.",
+        score: 1,
+      },
       {
         text: "Czuję, że wyglądam coraz gorzej.",
         score: 2,
@@ -314,8 +329,14 @@ const Questions = [
     id: 20,
     q: "Pytanie 20",
     a: [
-      { text: "Nie martwię się o swoje zdrowie bardziej niż zawsze.", score: 0 },
-      { text: "Martwię się swoimi dolegliwościami, mam rozstrój żołądka, zaparcie, bóle.", score: 1 },
+      {
+        text: "Nie martwię się o swoje zdrowie bardziej niż zawsze.",
+        score: 0,
+      },
+      {
+        text: "Martwię się swoimi dolegliwościami, mam rozstrój żołądka, zaparcie, bóle.",
+        score: 1,
+      },
       {
         text: "Stan mojego zdrowia bardzo mnie martwi, często o tym myślę.",
         score: 2,
@@ -376,11 +397,20 @@ const opt3checked = document.getElementById("opt3");
 
 // Results
 const result = document.getElementsByClassName("result");
+const resultTitle = document.getElementsByClassName("result-title");
 const resultDescription = document.getElementsByClassName("result-description");
-resultOne = "Prawdopodobnie to tymczasowe pogorszenie nastroju, spowodowane bieżącymi wydarzeniami w Twoim życiu. Jeśli przykre objawy będą utrzymywać się nadal, wykonaj ten test po 7 dniach i porównaj wyniki czy następuje pogorszenie czy poprawa.";
-resulTwo = "Wynik w tym przedziale wskazuje na potrzebę udania się do psychologa lub psychoterapeuty w celu dalszej diagnostyki. Łagodne objawy depresyjne leczone są psychoterapią, bez konieczności włączania farmakoterapii. Psycholog/ psychoterapeuta w razie konieczności skieruje Cię do lekarza psychiatry.";
-resultThree = "Punktacja w tym przedziale sugeruje podjęcie szybkich działań i kontakt z psychologiem/psychoterapeutą lub psychiatrą. Istnieje prawdopodobieństwo włączenia leczenia farmakologicznego, przeciwdepresyjnego przez psychiatrę. Ważne aby oprócz działań farmakologicznych rozpocząć psychoterapię. To warunkuje skuteczne leczenie depresji.";
-resultFour= "Konieczne jest udanie się do lekarza psychiatry. To niebezpieczny stan dla zdrowia i życia, głównie gdy pojawiają się myśli samobójcze. Psychoterapia jest bardziej intensywna. W niektórych przypadkach koniczne jest leczenie szpitalne aby nie dopuścić do zagrożenia życia.";
+titleOne = "Brak depresji";
+resultOne =
+  "Prawdopodobnie to tymczasowe pogorszenie nastroju, spowodowane bieżącymi wydarzeniami w Twoim życiu. Jeśli przykre objawy będą utrzymywać się nadal, wykonaj ten test po 7 dniach i porównaj wyniki czy następuje pogorszenie czy poprawa.";
+titleTwo = "Depresja łagodna";
+resultTwo =
+  "Wynik w tym przedziale wskazuje na potrzebę udania się do psychologa lub psychoterapeuty w celu dalszej diagnostyki. Łagodne objawy depresyjne leczone są psychoterapią, bez konieczności włączania farmakoterapii. Psycholog/ psychoterapeuta w razie konieczności skieruje Cię do lekarza psychiatry.";
+titleThree = "Depresja umiarkowana";
+resultThree =
+  "Punktacja w tym przedziale sugeruje podjęcie szybkich działań i kontakt z psychologiem/psychoterapeutą lub psychiatrą. Istnieje prawdopodobieństwo włączenia leczenia farmakologicznego, przeciwdepresyjnego przez psychiatrę. Ważne aby oprócz działań farmakologicznych rozpocząć psychoterapię. To warunkuje skuteczne leczenie depresji.";
+titleFour = "Depresja ciężka";
+resultFour =
+  "Konieczne jest udanie się do lekarza psychiatry. To niebezpieczny stan dla zdrowia i życia, głównie gdy pojawiają się myśli samobójcze. Psychoterapia jest bardziej intensywna. W niektórych przypadkach koniczne jest leczenie szpitalne aby nie dopuścić do zagrożenia życia.";
 
 // Selection rules
 
@@ -483,12 +513,16 @@ next.addEventListener("click", () => {
     testResult = testResult + selected;
     result[0].innerText = "Twój wynik testu to: " + testResult;
     if (testResult < 12) {
+      resultTitle[0].innerHTML = titleOne
       resultDescription[0].innerHTML = resultOne;
     } else if (testResult > 11 && testResult < 20) {
+      resultTitle[0].innerHTML = titleTwo;
       resultDescription[0].innerHTML = resultTwo;
-    } else if (testResult > 19 && testResult < 26 ) {
+    } else if (testResult > 19 && testResult < 26) {
+      resultTitle[0].innerHTML = titleThree;
       resultDescription[0].innerHTML = resultThree;
     } else {
+      resultTitle[0].innerHTML = titleFour;
       resultDescription[0].innerHTML = resultFour;
     }
   }
