@@ -57,6 +57,8 @@ let enabled = false;
 let id = 0;
 let finish = false;
 
+const optionDivs = document.querySelectorAll('.option');
+
 // Set test result variable
 let testResult = 0;
 
@@ -68,12 +70,6 @@ const opt0 = document.getElementById("option0");
 const opt1 = document.getElementById("option1");
 const opt2 = document.getElementById("option2");
 const opt3 = document.getElementById("option3");
-
-// Getting options div
-const opt0div = document.getElementById("first-option");
-const opt1div = document.getElementById("second-option");
-const opt2div = document.getElementById("third-option");
-const opt3div = document.getElementById("fourth-option");
 
 // Setting all unchecked
 const opt0checked = document.getElementById("opt0");
@@ -110,10 +106,7 @@ next.addEventListener("click", () => {
     opt3checked.checked = false;
 
     // Remove styling for checked
-    opt0div.classList.remove("option-active");
-    opt1div.classList.remove("option-active");
-    opt2div.classList.remove("option-active");
-    opt3div.classList.remove("option-active");
+    optionDivs.forEach(div => div.classList.remove('option-active'));
 
     // selected = "";
     enabled = false;
@@ -121,74 +114,15 @@ next.addEventListener("click", () => {
   }
 });
 
-// Selection rules
-
-opt0div.addEventListener("click", () => {
-  console.log("clicked!");
-  if (!opt0div.classList.contains("option-active")) {
-    opt0div.classList.add("option-active");
-    opt1div.classList.remove("option-active");
-    opt2div.classList.remove("option-active");
-    opt3div.classList.remove("option-active");
-    opt0checked.checked = true;
-    opt1checked.checked = false;
-    opt2checked.checked = false;
-    opt3checked.checked = false;
-    selected = Questions[id].a[0].score;
+document.querySelector('.option-container').addEventListener('click', (e) => {
+  if (e.target.nodeName === 'INPUT') {
+    const { parentNode, value } = e.target;
+    console.log(`clicked ${value}!`);
+    optionDivs.forEach(div => div.classList.remove('option-active'));
+    parentNode.classList.add('option-active');
+    selected = Questions[id].a[value].score;
     enabled = true;
     next.classList.add("next-active");
-    console.log("enabled? ", enabled);
-  }
-});
-opt1div.addEventListener("click", () => {
-  console.log("clicked 2!");
-  if (!opt1div.classList.contains("option-active")) {
-    opt0div.classList.remove("option-active");
-    opt1div.classList.add("option-active");
-    opt2div.classList.remove("option-active");
-    opt3div.classList.remove("option-active");
-    opt0checked.checked = false;
-    opt1checked.checked = true;
-    opt2checked.checked = false;
-    opt3checked.checked = false;
-    selected = Questions[id].a[1].score;
-    enabled = true;
-    next.classList.add("next-active");
-    console.log("enabled? ", enabled);
-  }
-});
-opt2div.addEventListener("click", () => {
-  console.log("clicked 3!");
-  if (!opt2div.classList.contains("option-active")) {
-    opt0div.classList.remove("option-active");
-    opt1div.classList.remove("option-active");
-    opt2div.classList.add("option-active");
-    opt3div.classList.remove("option-active");
-    opt0checked.checked = false;
-    opt1checked.checked = false;
-    opt2checked.checked = true;
-    opt3checked.checked = false;
-    selected = Questions[id].a[2].score;
-    enabled = true;
-    next.classList.add("next-active");
-    console.log("enabled? ", enabled);
-  }
-});
-opt3div.addEventListener("click", () => {
-  console.log("clicked 4!");
-  if (!opt3div.classList.contains("option-active")) {
-    opt0div.classList.remove("option-active");
-    opt1div.classList.remove("option-active");
-    opt2div.classList.remove("option-active");
-    opt3div.classList.add("option-active");
-    opt0checked.checked = false;
-    opt1checked.checked = false;
-    opt2checked.checked = false;
-    opt3checked.checked = true;
-    selected = Questions[id].a[3].score;
-    enabled = true;
-    next.classList.add("next-active");
-    console.log("enabled? ", enabled);
   }
 });
 
