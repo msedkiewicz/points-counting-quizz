@@ -1,7 +1,6 @@
 // Questions
 const Questions = [
   {
-    id: 1,
     q: "Pytanie 1",
     a: [
       {
@@ -20,7 +19,6 @@ const Questions = [
     ],
   },
   {
-    id: 2,
     q: "Pytanie 2",
     a: [
       { text: "Nie przejmuję się zbytnio przyszłością.", score: 0 },
@@ -36,7 +34,6 @@ const Questions = [
     ],
   },
   {
-    id: 3,
     q: "Pytanie 3",
     a: [
       { text: "Sądzę, że nie popełniam większych zaniedbań.", score: 0 },
@@ -55,8 +52,10 @@ const Questions = [
 
 // Set start
 let start = true;
-let selected = "";
+let selected = 0;
 let enabled = false;
+let id = 0;
+let finish = false;
 
 // Set test result variable
 let testResult = 0;
@@ -70,8 +69,7 @@ const opt1 = document.getElementById("option1");
 const opt2 = document.getElementById("option2");
 const opt3 = document.getElementById("option3");
 
-// Getting opitions div
-
+// Getting options div
 const opt0div = document.getElementById("first-option");
 const opt1div = document.getElementById("second-option");
 const opt2div = document.getElementById("third-option");
@@ -82,6 +80,46 @@ const opt0checked = document.getElementById("opt0");
 const opt1checked = document.getElementById("opt1");
 const opt2checked = document.getElementById("opt2");
 const opt3checked = document.getElementById("opt3");
+
+// Next button and method
+const next = document.querySelector(".next");
+next.addEventListener("click", () => {
+  start = false;
+  if (enabled === true) {
+    if (next.innerText === "Zakończ test") {
+      finish = true;
+      testResult = testResult + selected;
+      const result = document.getElementsByClassName("result");
+      result[0].innerText = "Twój wynik testu to: " + testResult;
+    }
+
+    if (id < Questions.length - 1) {
+      testResult = testResult + selected;
+      console.log(testResult);
+      id += 1;
+      iterate(id);
+      if (id === Questions.length - 1) {
+        next.innerText = "Zakończ test";
+      }
+    }
+
+    // Remove checked
+    opt0checked.checked = false;
+    opt1checked.checked = false;
+    opt2checked.checked = false;
+    opt3checked.checked = false;
+
+    // Remove styling for checked
+    opt0div.classList.remove("option-active");
+    opt1div.classList.remove("option-active");
+    opt2div.classList.remove("option-active");
+    opt3div.classList.remove("option-active");
+
+    // selected = "";
+    enabled = false;
+    next.classList.remove("next-active");
+  }
+});
 
 // Selection rules
 
@@ -157,8 +195,8 @@ opt3div.addEventListener("click", () => {
 // Iterate
 function iterate(id) {
   // Getting the result display section
-  const result = document.getElementsByClassName("result");
-  result[0].innerText = "";
+  const result = document.querySelector(".result");
+  result.innerText = "";
   // Setting the question text
   question.innerText = Questions[id].q;
 
@@ -176,48 +214,5 @@ function iterate(id) {
 }
 
 if (start) {
-  iterate("0");
+  iterate(0);
 }
-
-// Next button and method
-const next = document.getElementsByClassName("next")[0];
-let id = 1;
-
-let finish = false;
-
-next.addEventListener("click", () => {
-  start = false;
-  if (enabled === true) {
-    if (id == 2) {
-      next.innerText = "Zakończ test";
-    }
-    if (id == 3) {
-      finish = true;
-      testResult = testResult + selected;
-      const result = document.getElementsByClassName("result");
-      result[0].innerText = "Twój wynik testu to: " + testResult;
-    }
-
-    if (id < 3) {
-      testResult = testResult + selected;
-      console.log(testResult);
-      iterate(id);
-      id++;
-    }
-    // Remove checked
-    opt0checked.checked = false;
-    opt1checked.checked = false;
-    opt2checked.checked = false;
-    opt3checked.checked = false;
-
-    // Remove styling for checked
-    opt0div.classList.remove("option-active");
-    opt1div.classList.remove("option-active");
-    opt2div.classList.remove("option-active");
-    opt3div.classList.remove("option-active");
-
-    // selected = "";
-    enabled = false;
-    next.classList.remove("next-active");
-  }
-});
