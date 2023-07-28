@@ -36,13 +36,26 @@ body {
   width: 80vw;
 }
 .option {
-  padding: 10px;
+  padding: 0px;
   width: 100%;
   height: auto;
   font-size: larger;
   background-color: lightgrey;
   margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 6px;
 }
+
+.option input {
+  margin: 10px;
+}
+.option label {
+  flex-grow: 1;
+  margin: 10px;
+  margin-left: 0;
+}
+
 .option-active {
   background-color: lightskyblue;
 }
